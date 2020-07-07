@@ -1,0 +1,74 @@
+<html ng-app="app">
+<head>
+  <title>Hello Controllers in AngularJS</title>
+  <link rel="icon" href="/images/favicon-32x32.png" type="image/gif">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+</head>
+<body>
+<div class="container">
+  <div class="jumbotron">
+    <ng-view></ng-view>
+    <a href="https://sandbox.coingate.com/pay/payement-hour-market" rel="noopener noreferrer nofollow" target="_blank"><img alt="CoinGate Payment Button" src="https://assets.coingate.com/images/buttons/4.png" /></a>
+
+  </div>
+     
+</div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+<script src="/javascripts/angularapp.js"></script>
+<!-- Template -->   
+<script type="text/ng-template" id="/todos.html">
+  <div class='col-md-12'>
+    <label> Search:</label>
+    <input type="text" class='form-control' ng-model="search.name">
+  </div>
+  <hr>
+  <div class='row' ng-repeat="todo in todos | filter: search">
+    <div class='col-md-8'>
+      <div class="custom-control custom-checkbox">      
+        <input type="checkbox" class="custom-control-input" id="{{todo._id}}" ng-model="todo.completed" ng-change="update($index)">
+        <label class="custom-control-label" for="{{todo._id}}" ng-show="!editing[$index]"><a href="#/{{todo._id}}">{{todo.name}}</a></label>
+        <input ng-show="editing[$index]" type="text" class='form-control' ng-model="todo.name">
+      </div>
+    </div>
+    <div class='col-md-4'>
+      <button ng-show="!editing[$index]" class='btn btn-primary' ng-click="edit($index)">edit</button>
+      <button ng-show="editing[$index]"  class='btn btn-success' ng-click="update($index)">Update</button>
+      <button ng-show="editing[$index]" class='btn btn-warning' ng-click="cancel($index)">Cancel</button>
+      <button ng-show="!editing[$index]" class='btn btn-danger' ng-click="remove($index)">remove</button>
+    </div>
+  </div>
+  <hr>
+  <label>New task</label>
+  <input type="text" class="form-control" ng-model="newTodo"><button class="btn btn-block btn-primary" ng-click="save()">Create</button>
+  </script>
+  
+  <script type="text/ng-template" id="/todoDetails.html">
+    <h1>{{ todo.name }}</h1>
+    <div class='row'>
+      <div class='col-md-12'>
+        <div class="custom-control custom-checkbox">      
+          <input type="checkbox" class='custom-control-input' id='checkboxdetails' ng-model="todo.completed" checked=''>  
+          <label class='custom-control-label' for='checkboxdetails'>Completed:</label>
+        </div>
+        <br>
+        <label class=''>Note:</label> 
+        <textarea class='form-control' ng-model="todo.note"></textarea>
+        <br>
+        <label class=''>Latitude:</label>
+        <input type='float' class='form-control' ng-model="todo.latitude">
+        <br>
+        <label class=''>Longitude:</label>
+        <input type='float' class='form-control' ng-model="todo.longitude">
+        <br>
+        <button class="btn btn-success" ng-click="update()">Update</button>
+        <a class="btn btn-warning" href="/">Cancel</a>
+        <button class="btn btn-danger"ng-click="remove()">Remove</button>
+        </div>
+      </div>
+  </div>
+  </script>
+</html>
