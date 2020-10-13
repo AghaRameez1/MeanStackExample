@@ -13,7 +13,10 @@ var indexRouter = require('./routes/todoRoutes');
 var app = express();
 
 // Connect to MongoDB and create/use database called todoAppTest
-mongoose.connect('mongodb://localhost:27017/todoAppTest',{useCreateIndex:true, useNewUrlParser: true , useUnifiedTopology: true}).then(() =>  console.log('connection succesful'))
+
+
+//mongodb://localhost:27017/todoAppTest
+mongoose.connect('mongodb+srv://agharameez:Thek1ller@cluster0.kaztg.mongodb.net/todoAppTest?retryWrites=true&w=majority',{useCreateIndex:true, useNewUrlParser: true , useUnifiedTopology: true}).then(() =>  console.log('connection succesful'))
 .catch((err) => console.error(err));
 
 
