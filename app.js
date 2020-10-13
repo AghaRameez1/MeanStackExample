@@ -1,4 +1,4 @@
-
+var config = require('./config/config')
 var createError = require('http-errors');
 var passport = require('passport');
 var mongoose = require('mongoose');
@@ -16,7 +16,7 @@ var app = express();
 
 
 //mongodb://localhost:27017/todoAppTest
-mongoose.connect('mongodb+srv://agharameez:Thek1ller@cluster0.kaztg.mongodb.net/todoAppTest?retryWrites=true&w=majority',{useCreateIndex:true, useNewUrlParser: true , useUnifiedTopology: true}).then(() =>  console.log('connection succesful'))
+mongoose.connect(config.mongoose,{useCreateIndex:true, useNewUrlParser: true , useUnifiedTopology: true}).then(() =>  console.log('connection succesful'))
 .catch((err) => console.error(err));
 
 

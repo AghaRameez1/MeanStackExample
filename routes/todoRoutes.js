@@ -1,3 +1,4 @@
+var config = require('../config/config')
 var express = require('express');
 const cool = require('cool-ascii-faces');
 var mongoose = require('mongoose');
@@ -10,7 +11,7 @@ const UserModel = require('../model/users');
 var User = mongoose.model('UserModel')
 var jwt = require('express-jwt');
 var auth = jwt({
-    secret: 'MY_SECRET',
+    secret: config.secret,
     userProperty: 'payload'
 });
 router.get('/cool', (req, res) => res.send(cool()))
