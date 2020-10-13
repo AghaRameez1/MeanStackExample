@@ -1,4 +1,5 @@
 var express = require('express');
+const cool = require('cool-ascii-faces');
 var mongoose = require('mongoose');
 var passport = require('passport');
 const todoModel = require('../model/todoschema');
@@ -12,7 +13,7 @@ var auth = jwt({
     secret: 'MY_SECRET',
     userProperty: 'payload'
 });
-
+router.get('/cool', (req, res) => res.send(cool()))
 router.get('/index', function (req, res) {
     var fs = include('fs');
     var newFile = fs.createWriteStream("readme_copy.md");
@@ -46,7 +47,7 @@ router.post('/login', function (req, res) {
     try {
         passport.authenticate('local', function (err, info) {
 
-            User.findOne({ email: req.body.username }, function (err, user) {
+            User.findOne({ email: req.body.email }, function (err, user) {
                 var token;
                 //if Password throws/catches an error
                 if (err) {

@@ -1,3 +1,4 @@
+
 var createError = require('http-errors');
 var passport = require('passport');
 var mongoose = require('mongoose');
@@ -25,7 +26,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './public')));
-
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
